@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 # Ensure the backend directory is on sys.path so 'storyteller' is importable
 # (needed for Vercel where the working directory may not be backend/)
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+# sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from flask import Flask, jsonify, request, Response
 
