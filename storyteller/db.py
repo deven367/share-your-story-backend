@@ -6,7 +6,13 @@ from pathlib import Path
 
 import sqlite_utils
 
-DB_PATH = Path(__file__).resolve().parent.parent / "stories.db"
+import os
+
+# Create Vercel-compatible DB_PATH
+if os.environ.get("VERCEL") or os.environ.get("AWS_EXECUTION_ENV") or str(Path(__file__)).startswith("/var/task"):
+    DB_PATH = Path("/tmp/stories.db")
+else:
+    DB_PATH = Path(__file__).resolve().parent.parent / "stories.db"
 
 PRESET_TAGS = [
     "childhood",
